@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Fredoka:wdth,wght@98.3,300&family=Lexend+Deca:wght@100..900&family=Montserrat:ital,wght@0,600;1,600&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Yarndings+20&display=swap" rel="stylesheet">
+    <title>Pagina 4</title>
+    <style>
+        body{
+          background-color: rgb(147, 202, 234);
+
+            .chewy-regular{
+            font-family: "Chewy", system-ui;
+            font-weight: 400;
+            font-style: normal;
+            }
+        }
+        canvas {
+            border: 3px solid rgb(60, 96, 115);
+            background-color:rgb(255, 221, 237);
+        }
+    </style>
+z    <script>
+        var x = 0;
+        var y = 0;
+        var dx = 5;
+        var dy = 3;
+        var w = 0;
+        var z = 0;
+        var dw = 5;
+        var dz = 1;
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            console.log('animando');
+
+            var canvas = document.getElementById("micanvas");
+            var context = canvas.getContext("2d");
+
+            
+            context.clearRect(0, 0, innerWidth, innerHeight);
+
+            //Relleno
+            context.fillStyle = "White";   
+            context.fillRect(230, 400, 340, 80);
+            context.fillRect(250, 300, 300, 220);
+            context.fillRect(320, 280, 160, 20); 
+            context.fillRect(140, 320, 520, 60);    
+            context.fillRect(0, 360, 800, 80);   
+            context.fillRect(0, 440, 150, 40); 
+            context.fillRect(650, 440, 150, 40);
+            context.fillRect(790, 480, 20, 20);
+            context.fillRect(-10, 480, 20, 20);
+               
+
+            //Borde
+            context.fillStyle = "Black";
+            context.fillRect(290, 520, 220, 20);
+            context.fillRect(320, 260, 160, 20);
+            context.fillRect(550, 380, 20, 20);
+            context.fillRect(230, 380, 20, 20);
+            context.fillRect(550, 480, 20, 20);
+            context.fillRect(510, 500, 40, 20);
+            context.fillRect(570, 400, 20, 80);
+            context.fillRect(230, 480, 20, 20);
+            context.fillRect(250, 500, 40, 20);
+            context.fillRect(210, 400, 20, 80);  
+            context.fillRect(180, 300, 100, 20);  
+            context.fillRect(520, 300, 100, 20);  
+            context.fillRect(280, 280, 40, 20);
+            context.fillRect(480, 280, 40, 20);
+            context.fillRect(620, 320, 40, 20);
+            context.fillRect(660, 340, 120, 20);
+            context.fillRect(590, 420, 20, 20);
+            context.fillRect(610, 440, 40, 20);
+            context.fillRect(650, 460, 40, 20);
+            context.fillRect(690, 480, 100, 20);
+            context.fillRect(790, 500, 20, 20);
+            context.fillRect(780, 360, 20, 20);
+            context.fillRect(0, 360, 20, 20);
+            context.fillRect(-10, 500, 20, 20);
+            context.fillRect(10, 480, 100, 20);
+            context.fillRect(110, 460, 40, 20);
+            context.fillRect(150, 440, 40, 20);
+            context.fillRect(190, 420, 20, 20);
+            context.fillRect(20, 340, 120, 20);
+            context.fillRect(140, 320, 40, 20);
+            context.fill
+
+            //Boca
+            context.fillRect(390, 440, 20, 20);
+            context.fillRect(370, 460, 20, 20);
+            context.fillRect(350, 440, 20, 20);
+            context.fillRect(410, 460, 20, 20);
+            context.fillRect(430, 440, 20, 20);
+
+            //Rubor
+             context.fillStyle = "pink";
+            context.fillRect(250, 440, 40, 40);
+            context.fillRect(510, 440, 40, 40);
+
+            //Ojos
+            context.fillStyle = "lightblue";
+            context.fillRect(270, 400, 40, 60);
+            context.fillRect(490, 400, 40, 60);
+
+            context.fillStyle = "rgba(173, 216, 230, 0.5)";
+            context.fillRect(325, y, 150, 150);
+
+            context.fillStyle = "rgba(173, 216, 230, 0.5)";
+            context.fillRect(x, 80, 200, 100);
+
+            context.font = '60pt chewy';
+            context.fillStyle = 'skyblue';
+            context.fillText('Cinnamoroll', w, z);
+
+
+            
+            if (x > 800 - 200 || x < 0) dx = -dx;
+            if (y > 600 - 150|| y < 0) dy = -dy;
+
+           
+            x += dx;
+            y += dy;
+
+             if (w > 800 - 360|| w < 0) dw = -dw;
+            if (z > 600|| z < 0) dz = -dz;
+
+           
+            w += dw;
+            z += dz;
+
+        }
+        animate();
+    </script>
+</head>
+<body>
+    <canvas id="micanvas" width="800" height="600"></canvas>
+</body>
+</html>
