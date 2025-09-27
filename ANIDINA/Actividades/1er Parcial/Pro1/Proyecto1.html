@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="stylePro1.css">
+  </head>
+  <body>
+    <h1>Suricatas</h1>  <h2>Presiona las teclas del 1 al 7 para obtener datos sobre estos animalillos.</h2>
+    <canvas id="canvas" width="700" height="700"></canvas>
+    <canvas id="canvas1" width="400" height="700"></canvas>
+    <script>
+
+    window.onload = function () {
+
+      var canvas = document.getElementById("canvas");
+      var context = canvas.getContext("2d");
+
+      context.font = '20pt Tahoma';
+      context.fillStyle = '#1d1e4c'; 
+
+      var imagen1 = new Image();
+      imagen1.src = "1suricata.jpg"
+
+      var imagen2 = new Image();
+      imagen2.src = "2suricata.jpg"
+
+      var imagen3 = new Image();
+      imagen3.src = "3suricata.jpg"
+
+      var imagen4 = new Image();
+      imagen4.src = "4suricata.jpg"
+
+      var imagen5 = new Image();
+      imagen5.src = "5suricata.jpg"
+
+      var imagen6 = new Image();
+      imagen6.src = "6suricata.jpg"
+
+      var imagen7 = new Image();
+      imagen7.src = "7suricata.jpg"
+
+      function onKeyboardEvent (event) {
+        switch (event.keyCode) {
+        case 49:
+          console.log("up!");
+          context.clearRect (0,0, innerWidth, innerHeight)
+          context.fillText('Dato 1', 60, 60)
+          context.drawImage(imagen1, 100, 100, 200, 300)
+          context.fillText('Es una mangosta.', 100, 450)
+          context.fillText('De las más pequeñas de hecho.', 100, 485)
+          break;
+
+        case 50:
+          console.log("up!");
+          context.clearRect (0,0, innerWidth, innerHeight)
+          context.fillText('Dato 2', 60, 60)
+          context.drawImage(imagen2, 100, 100, 200, 300)
+          context.fillText('Miden alrededor de 20 y 30 centimetros.', 100, 450)
+          break;
+
+        case 51:
+          console.log("up!");
+          context.clearRect (0,0, innerWidth, innerHeight)
+          context.fillText('Dato 3', 60, 60)
+          context.drawImage(imagen3, 100, 100, 400, 250)
+          context.fillText('Suelen tener un promedio de 2 o 3', 100, 450)
+          context.fillText('crías por camada.', 100, 485)
+          break;
+
+        case 52:
+          console.log("up!");
+          context.clearRect (0,0, innerWidth, innerHeight)
+          context.fillText('Dato 4', 60, 60)
+          context.drawImage(imagen4, 100, 100, 400, 250)
+          context.fillText('Son inmunes al veneno de alacranes,', 100, 450)
+           context.fillText('pues son parte de su dieta.', 100, 485)
+          break;
+
+        case 53:
+          console.log("up!");
+          context.clearRect (0,0, innerWidth, innerHeight)
+          context.fillText('Dato 5', 60, 60)
+          context.drawImage(imagen5, 100, 100, 400, 250)
+           context.fillText('Son sociales, viviendo en grupos de 5+,', 100, 450)
+           context.fillText('todos siguen a una matriarca.', 100, 485)
+          break;
+
+        case 54:
+          console.log("up!");
+          context.clearRect (0,0, innerWidth, innerHeight)
+          context.fillText('Dato 6', 60, 60)
+          context.drawImage(imagen6, 100, 100, 400, 250)
+          context.fillText('Clasificados como el mamífero más asesino,', 100, 450)
+           context.fillText('debido a constantes peleas por territorio.', 100, 485)
+          break;
+
+        case 55:
+           console.log("up!");
+          context.clearRect (0,0, innerWidth, innerHeight)
+          context.fillText('Dato 7', 60, 60)
+          context.drawImage(imagen7, 100, 100, 400, 250)
+          context.fillText('Solo la matriarca puede tener crías,', 100, 450)
+           context.fillText('el resto de la manada son niñeras.', 100, 485)
+          break;
+        
+        default:
+          console.log(event.keyCode);
+        }
+      }
+
+      window.addEventListener('keydown', onKeyboardEvent, false);
+    };
+
+        var x = Math.random() * 650;
+        var y = 200;
+        var dx = 2;
+        var dy = 2; 
+        var imagen = new Image();
+        imagen.src = "SuriDib.png"; 
+
+        function animate(){    
+            requestAnimationFrame(animate);
+            var canvas = document.getElementById("canvas1");
+            var context = canvas.getContext("2d");
+            context.clearRect(0, 0, innerWidth, innerHeight);
+            context.drawImage(imagen, x, y, 130, 150); 
+
+            if (x > 400 - 130 || x < 0){
+                dx = -dx;
+            }
+
+            if (y > 700 - 150 || y < 0){
+                dy = -dy;
+            }
+
+            x += dx;
+            y += dy;
+        }
+        animate();
+
+    </script>
+  </body>
+</html>
