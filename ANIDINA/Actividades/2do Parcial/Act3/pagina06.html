@@ -1,4 +1,3 @@
-<!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -12,53 +11,55 @@
         text-align: center;
       }
       canvas {
-        background-image: url("Nbs.jpg");
+        background-color: #24719e;
+         background-image: url("Nbs.jpg");
       }
       
     </style>
 
   <body>
     <canvas id= "canvas" width="1200" height="700"></canvas>
+    
 
     <script>
     window.onload = function () {
       var canvas = document.getElementById('canvas'),
           context = canvas.getContext('2d'),
-        angleX = 0,
-          angleY = 0,
-          range = 200,
-          centerX = 700;
-          centerY = 200,
-          xspeed = 2,
-          xspeedneg=-1, 
-          yspeed = 0.04;
-          xpos= 0; 
-          ypos= 0; 
+          angle = 0,
+          range = 100,
+          centerScale = 1.5,
+          centerY = 250,
+          xspeed = 1,
+          yspeed = 0.03,
+          escalaX = 1,
+          escalaY = 1,
+          xpos = 0,
+          ypos = centerY;
           Bird = new Image();
-          Bird.src = 'birdy.png';
+          Bird.src = 'Birdy.png';
 
-        context.lineWidth = 2;
+      context.lineWidth = 2;
+
 
       (function drawFrame () {
         window.requestAnimationFrame(drawFrame, canvas);
-        context.clearRect(0, 0, innerWidth, innerHeight);
-
-        Bird.x = centerX + Math.sin(angleX) * range;
-        Bird.y = centerY + Math.sin(angleY) * range;
-        angleX += xspeed;
-        angleY += yspeed;
-        
-        console.log(xpos);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.beginPath();
+        context.moveTo(xpos, ypos);
+        //Calculate the new position.
         xpos += xspeed;
-        if(xpos>1000 || xpos<0){
-       xspeed = -xspeed; 
-      } 
-        ypos = centerY + Math.sin(angleY) * range;
-        context.drawImage(Bird, xpos, ypos, 200, 200);
-        context.font = '30pt Calibri';
+        angle += yspeed;
+        ypos = centerY + Math.sin(angle) * range;
+        
+        escalaX = escalaY = centerScale + Math.sin(angle) * 1;
+        context.drawImage(Bird, xpos-25, ypos-25, 60 * escalaX, 60 * escalaY);
+
+        angle += yspeed;
+
+       context.font = '30pt Calibri';
         context.fillStyle = 'Black';
         context.fillText('Look at Birdy!', 470, 660);
-        context.restore();
+
       }());
     };
     </script>
