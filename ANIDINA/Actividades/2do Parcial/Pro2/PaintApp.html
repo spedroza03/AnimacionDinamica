@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Paint</title>
+    <style>
+        body{
+            text-align: center;
+            width: 100%;
+            background-image: url("fondo.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+        }
+        canvas{
+            background-color: rgb(255, 242, 223);
+        }
+        .container{
+            margin: 0px auto;
+            text-align: center;
+            width: 1000px;
+        }
+        button{
+            width: 100px;
+            height: 50px;
+            margin: 5px;
+        }
+        button:hover{
+            opacity: 0.5;
+        }
+        #red {
+            background-color:#ff0000;
+            font: 16px impact;
+            color: white;
+        }
+         #orange {
+            background-color:#ff8000;
+            font: 16px impact;
+            color: white;
+        }
+         #yellow {
+            background-color:#ffd200;
+            font: 16px impact;
+            color: white;
+        }
+        #green {
+            background-color:green;
+            font: 16px impact;
+            color: white;
+        }
+        #blue {
+            background-color:blue;
+            font: 16px impact;
+            color: white;
+            
+        }
+         #purple {
+            background-color:#6600a1;
+            font: 16px impact;
+            color: white;
+        }
+         #pink {
+            background-color:#ff0080;
+            font: 16px impact;
+            color: white;
+        }
+         #black {
+            background-color:#000000;
+            font: 16px impact;
+            color: white;
+        }
+          #chico {
+            background-color:#000000;
+            font: 16px impact;
+            color: white;
+        }
+          #medio {
+            background-color:#000000;
+            font: 16px impact;
+            color: white;
+        }
+          #grande {
+            background-color:#000000;
+            font: 16px impact;
+            color: white;
+        }
+          #gigante {
+            background-color:#000000;
+            font: 16px impact;
+            color: white;
+        }
+        #borrar{
+            width: 300px;
+            background-color:black;
+            font: 16px impact;
+            color: white;
+        }
+
+    </style>
+  </head>
+  <body>
+    <h1>PAINT APP</h1>
+    <h2>Usa los botones y el mouse para dibujar lo que gustes, arriba son colores, abajo tamaños y borrador</h2>
+    <p></p>
+    <div id="container">
+        <div class="colores">
+            <button id="red" type="button" value="#ff0000">Rojo</button>
+            <button id="orange" type="button" value="#ff8000">Naranja</button> 
+            <button id="yellow" type="button" value="#ffd200">Amarillo</button> 
+            <button id="green" type="button" value="#00ff00">Verde</button>
+            <button id="blue" type="button" value="#0000ff">Azul</button> 
+            <button id="purple" type="button" value="#6600a1">Morado</button> 
+            <button id="pink" type="button" value="#ff0080">Rosa</button> 
+            <button id="black" type="button" value="#000000">Negro</button> 
+        </div>
+         <aside>Click y dibuja con el mouse.</aside>
+        <canvas id="canvas" width="900px" height="700px"></canvas>
+           <div class="tamano">
+            <button id="chico" type="button" value="1">Chico</button> 
+            <button id="medio" type="button" value="10">Medio</button> 
+            <button id="grande" type="button" value="25">Grande</button> 
+            <button id="gigante" type="button" value="50">Gigante</button> 
+            <button id="borrar" type="button">Borrar todo</button>
+        </div>
+    </div>
+        <script src="utils.js"></script>
+        <script>
+          window.onload = function () {
+        var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          mouse = utils.captureMouse(canvas);
+
+        canvas.addEventListener('mousedown', function () {
+            context.beginPath();
+            context.moveTo(mouse.x, mouse.y);
+            canvas.addEventListener('mousemove', onMouseMove, false);
+        }, false);
+
+        canvas.addEventListener('mouseup', function () {
+            canvas.removeEventListener('mousemove', onMouseMove, false);
+        }, false);
+
+      function onMouseMove () {
+        context.lineTo(mouse.x, mouse.y);
+        context.stroke();
+      }
+
+      var colores = document.getElementsByClassName('colores')[0];
+      colores.addEventListener('click', function(event) {
+        context.strokeStyle = event.target.value;
+      });
+
+      var tamano = document.getElementsByClassName('tamano')[0];
+      tamano.addEventListener('click', function(event) {
+        context.lineWidth = event.target.value;
+      });
+      var clearButton = document.getElementById('borrar');
+      clearButton.addEventListener('click', function() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+      });
+
+    };
+    </script>
+    
+  </body>
+</html>
