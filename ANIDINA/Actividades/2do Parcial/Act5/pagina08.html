@@ -1,33 +1,164 @@
 <!DOCTYPE html>
-<html>
-
-
- <style>
-      body {
-        background-color: #6788e6;
-        text-align: center;
-      }
-      canvas {
-        background-color: #ffffff;
-      }
-      
-    </style>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Figuras con Líneas y Elipses</title>
+  <style>
+    canvas {
+        background-color: #192342;  
+        border: 10px solid #412a15;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
 <body>
-<h1>HTML5 Canvas</h1>
-<h2>The stroke() Method</h2>
+  <canvas id="canvas" width="750" height="500"></canvas>
 
-<canvas id="myCanvas" width="1000" height="1000" style="border:1px solid rgb(44, 42, 137)"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
 
-<script>
-const c = document.getElementById("myCanvas");
-const ctx = c.getContext("2d");
-ctx.beginPath();
-ctx.moveTo(20, 20);
-ctx.lineTo(20, 100);
-ctx.lineTo(70, 100);
-ctx.strokeStyle = "red";
-ctx.stroke();
-</script> 
+    // Función para dibujar con líneas
+    function drawPath(color, points, close = true) {
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.moveTo(points[0][0], points[0][1]);
+      for (let i = 1; i < points.length; i++) {
+        ctx.lineTo(points[i][0], points[i][1]);
+      }
+      if (close) ctx.closePath();
+      ctx.stroke();
+    }
 
+    // Función para dibujar una elipse
+    function drawEllipse(color, x, y, radiusX, radiusY, rotation = 0) {
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.ellipse(x, y, radiusX, radiusY, rotation, 0, 2 * Math.PI);
+      ctx.stroke();
+    }
+
+     ctx.beginPath();
+    ctx.fillStyle = 'Darkgreen';
+    drawPath('Darkgreen', [
+      [0, 400], [800, 400], [800, 500], [0, 500]
+    ]); 
+    ctx.fill();
+
+    //CASA
+    ctx.beginPath();
+    ctx.fillStyle = 'Rosybrown';
+    drawPath('Rosybrown', [
+      [200, 200], [500, 200], [500, 400], [200, 400]
+    ]); 
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle = 'Maroon';
+    drawPath('Maroon', [
+      [190, 200], [350, 50], [510, 200]
+    ]); 
+    ctx.fill();
+    drawPath('Maroon', [
+      [300, 400], [300, 250], [400, 250], [400, 400]
+    ]); 
+    ctx.fill(); 
+
+   //HONGO
+    ctx.beginPath();
+    ctx.fillStyle = 'white';
+    drawPath('white', [
+      [150, 400], [160, 340], [170, 340], [180, 400]
+    ]); 
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle = 'red';
+    drawEllipse('red', 165, 330, 50, 30); 
+    ctx.fill();
+
+     ctx.beginPath();
+    ctx.fillStyle = 'white';
+    drawEllipse('white', 185, 350, 10, 10); 
+    ctx.fill();
+    drawEllipse('white', 145, 323, 20, 20); 
+    ctx.fill();
+    drawEllipse('white', 195, 312, 8, 8); 
+    ctx.fill();
+    
+     ctx.beginPath();
+    ctx.fillStyle = 'white';
+    drawPath('white', [
+      [520, 400], [530, 340], [540, 340], [550, 400]
+    ]); 
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle = 'red';
+    drawEllipse('red', 535, 330, 50, 30); 
+    ctx.fill();
+
+     ctx.beginPath();
+    ctx.fillStyle = 'white';
+    drawEllipse('white', 555, 350, 10, 10); 
+    ctx.fill();
+    drawEllipse('white', 515, 323, 20, 20); 
+    ctx.fill();
+    drawEllipse('white', 565, 312, 8, 8); 
+    ctx.fill();
+
+
+    ctx.beginPath();
+    ctx.fillStyle = 'goldenrod';
+    drawPath('gold', [
+      [600, 100], [615, 140], [660, 140], [625, 165],
+      [640, 210], [600, 180], [560, 210], [575, 165],
+      [540, 140], [585, 140], [600, 100]
+    ]);
+    ctx.fill();
+
+   ctx.beginPath();
+   ctx.fillStyle = 'aliceblue';
+    drawEllipse('aliceblue', 100, 100, 60, 60);
+    ctx.fill();
+    
+
+    //CONEJITO
+    ctx.beginPath();
+    ctx.fillStyle = 'aliceblue';
+    drawEllipse('aliceblue', 300, 400, 20, 20);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle = 'midnightblue';
+    drawEllipse('midnightblue', 340, 250, 12, 35);
+    ctx.fill();
+    drawEllipse('midnightblue', 380, 250, 12, 35);
+    ctx.fill();
+    drawEllipse('midnightblue', 360, 310, 35, 35);
+    ctx.fill();
+    drawEllipse('midnightblue', 360, 390, 50, 50);
+    ctx.fill();
+
+     ctx.beginPath();
+    ctx.fillStyle = 'aliceblue';
+    drawEllipse('aliceblue', 340, 300, 8, 8);
+    ctx.fill();
+    drawEllipse('aliceblue', 380, 300, 8, 8);
+    ctx.fill();
+    drawEllipse('aliceblue', 360, 390, 40, 40);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle = 'pink';
+    drawEllipse('pink', 360, 320, 8, 8);
+    ctx.fill();
+    drawEllipse('pink', 380, 250, 6, 25);
+    ctx.fill();
+     drawEllipse('pink', 340, 250, 6, 25);
+    ctx.fill();
+
+  </script>
 </body>
 </html>
